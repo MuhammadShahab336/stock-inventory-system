@@ -73,8 +73,28 @@ const login = async ({ email, password }) => {
     }
 }
 
+const currentUser = async (id) => {
+    const user = await userRepository.findById(id)
+
+    if (!user) {
+        throw ApiError.notFound("User not found")
+    }
+
+    return {
+        id: user.id,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+        role: user.role,
+        status: user.status,
+        create_at: user.create_at
+    }
+
+}
+
 export default {
     createToken,
     register,
-    login
+    login,
+    currentUser
 }

@@ -24,7 +24,19 @@ const login = async (req, res) => {
     })
 }
 
+const me = async (req, res) => {
+    const user = await authService.currentUser(req.user.id)
+
+    return successResponse({
+        res,
+        statusCode: 200,
+        message: "Current user retrieved",
+        data: user
+    })
+}
+
 export default {
     register,
-    login
+    login,
+    me
 }
