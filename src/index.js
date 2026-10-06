@@ -4,6 +4,7 @@ import notFoundMiddleware from "./middlewares/notFound.middleware.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import ApiError from "./utils/AppError.js";
 import userRoutes from "./modules/users/user.routes.js";
+import authRoutes from "./modules/auth/auth.routes.js"
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get("/test", (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 // 404
 app.use(notFoundMiddleware);

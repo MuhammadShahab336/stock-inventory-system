@@ -17,12 +17,19 @@ enum UserStatus {
   INACTIVE
 }
 
+enum UserRole {
+  USER
+  ADMIN
+}
+
 model User {
   id          Int        @id @default(autoincrement())
   first_name  String    
   last_name   String    
   email       String     @unique
+  password    String
   status      UserStatus @default(ACTIVE)
+  role        UserRole   @default(USER)
   create_at   DateTime   @default(now())
   updated_at  DateTime   @updatedAt
 

@@ -3,7 +3,7 @@ import app from "./index.js";
 import prisma from "./database/prisma.js";
 import env from "./config/env.js";
 
-const PORT = env.PORT || 5000;
+const PORT = env.port || 5000;
 
 const startServer = async () => {
     try {
